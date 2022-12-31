@@ -6,7 +6,7 @@ const connect = async () => {
        console.log('Kết nối tới db thành công')
     }
     catch(err){
-       console.log('Lỗi kết nối DB',err)
+       console.log('Lỗi kết nối DB:',err)
     }
 }
 module.exports = {connect} 
