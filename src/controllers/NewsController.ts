@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 const News = require("../models/News")
+const fs = require('fs')
 class NewsController {
     // GET lấy tất cả danh sách tin tức
     async getAllNews(req : Request, res : Response) {
@@ -69,8 +70,12 @@ class NewsController {
      // DELETE xóa tin tức
     async deleteNews(req : Request, res : Response) {
       try{
-          await News.findByIdAndRemove(req.params._id)
-          res.json()
+        const newItem = await News.findById(req.params._id)
+        await fs.unlink(`./src/uploads/${newItem.imgNews.split('/').slice(-1)}`,(err: Error)=>{
+          if(err) console.log(err)
+        })
+        await newItem.remove()
+        res.json()
         }
         catch(err){
           console.log(err)

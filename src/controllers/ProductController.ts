@@ -1,5 +1,21 @@
+import { Console } from "console"
 import { Request, Response } from "express"
 const Product = require("../models/Product")
+const fs = require('fs')
+
+interface CartItem{
+  _id: null,
+  prodName: string,
+  prodType : string,
+  prodImg : string,
+  prodPrice : number,
+  prodDetail : string,
+  quantity : number,
+  saleOff:string,
+  createdAt:string,
+  updatedAt:string,
+  qty : number
+}
 class ProductController {
     // GET lấy tất cả sản phẩm
     async getAllProduct(req : Request, res : Response) {
@@ -89,10 +105,29 @@ class ProductController {
       console.log(err)
     }
   }
+   // PATCH cập nhật số lượng sp
+  async updateQuantity(req : any, res : Response) {
+    try{
+      const cartList = req.body
+      cartList.map(async (item : CartItem) => {
+        const filter = { prodName: item.prodName }
+        const update = { quantity: item.quantity - (item.qty || 1) }
+        await Product.findOneAndUpdate(filter, update)
+        res.json()
+      })
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
     // DELETE xóa sp
   async deleteProduct(req : Request, res : Response) {
     try{
-        await Product.findByIdAndRemove(req.params._id)
+        const prodItem = await Product.findById(req.params._id)
+        await fs.unlink(`./src/uploads/${prodItem.prodImg.split('/').slice(-1)}`,(err: Error)=>{
+          if(err) console.log(err)
+        })
+        await prodItem.remove()
         res.json()
       }
       catch(err){

@@ -8,6 +8,7 @@ router.get('/:prodType',productController.getProductByType)
 router.get('/food/:prodName',productController.getProductByName)
 router.get('/',productController.getAllProduct)
 router.post('/',upload.single('prodImg'),productController.addProduct)
+router.patch('/quantity',productController.updateQuantity)
 router.patch('/:_id',upload.single('prodImg'),productController.updateProduct)
 router.delete('/delete/:_id',productController.deleteProduct)
 

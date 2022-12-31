@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 const Menu = require("../models/Menu")
+const fs = require('fs')
 class MenuController {
     // GET lấy tất cả danh sách menu
     async getAllMenu(req : Request, res : Response) {
@@ -46,7 +47,11 @@ class MenuController {
      // DELETE xóa menu
     async deleteMenu(req : Request, res : Response) {
       try{
-          await Menu.findByIdAndRemove(req.params._id)
+          const menuItem = await Menu.findById(req.params._id)
+          await fs.unlink(`./src/uploads/${menuItem.imgMenu.split('/').slice(-1)}`,(err: Error)=>{
+            if(err) console.log(err)
+          })
+          await menuItem.remove()
           res.json()
         }
         catch(err){
