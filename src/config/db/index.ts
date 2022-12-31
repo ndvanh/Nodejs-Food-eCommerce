@@ -8,4 +8,4 @@ const connect = async () => {
        console.log('Lỗi kết nối DB',err)
     }
 }
-module.exports = {connect}
+module.exports = {connect} 
