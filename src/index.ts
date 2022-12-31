@@ -10,7 +10,7 @@ const cors = require("cors")
         origin:"*",
         methods:['GET','POST','DELETE','PUT','PATCH']
  }))
-export const multer = require('multer')
+const multer = require('multer')
  // Routes init
 const route = require("./routes/index")
 route(app)
@@ -28,3 +28,4 @@ app.use('uploads', express.static('uploads'))
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+export {}
