@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const User = new Schema({
@@ -8,3 +8,4 @@ const User = new Schema({
    userPassword: {type : String ,minLength : 6 ,require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('User', User)
+export {} // chuyển file thành ES module

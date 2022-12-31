@@ -35,7 +35,7 @@ class OrderController {
       }
      }
     // POST thêm đơn hàng
-    async addOrder(req : any, res : Response) {
+    async addOrder(req : Request, res : Response) {
       try{
         const order = new Order(req.body)
         await order.save()
@@ -46,7 +46,7 @@ class OrderController {
       }
      }
          // PATCH cập nhật menu
-     async updateOrder(req : any, res : Response) {
+     async updateOrder(req : Request, res : Response) {
       try{
           await Order.updateOne({_id:req.params._id},req.body)
           res.json()

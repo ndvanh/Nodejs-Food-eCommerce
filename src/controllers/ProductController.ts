@@ -1,4 +1,3 @@
-import { Console } from "console"
 import { Request, Response } from "express"
 const Product = require("../models/Product")
 const fs = require('fs')
@@ -106,7 +105,7 @@ class ProductController {
     }
   }
    // PATCH cập nhật số lượng sp
-  async updateQuantity(req : any, res : Response) {
+  async updateQuantity(req : Request, res : Response) {
     try{
       const cartList = req.body
       cartList.map(async (item : CartItem) => {

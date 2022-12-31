@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 const Admin = require("../models/Admin")
 class AdminController {
      // POST đăng nhập
-    async loginAdmin(req : any, res : Response) {
+    async loginAdmin(req : Request, res : Response) {
       try{
         const adminAccount = await Admin.findOne({adminAccount :req.body.adminAccount,adminPassword:req.body.adminPassword})
         if (adminAccount) res.json(adminAccount)

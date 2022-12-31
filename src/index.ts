@@ -1,6 +1,4 @@
-import * as bodyParser from "body-parser"
-import { Request, Response } from "express"
-
+const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 app.use(bodyParser.json())
@@ -21,7 +19,7 @@ const db = require("./config/db/index")
 db.connect()
 
 app.get('/', (req : Request, res : Response) => {
-  res.json('API Cloud Food!')
+  res.json()
 })
 
 app.use(express.static('src'))

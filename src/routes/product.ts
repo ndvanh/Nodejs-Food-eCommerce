@@ -1,5 +1,5 @@
-import express from "express"
-import {multer} from "../index"
+const express = require('express')
+const multer = require('multer')
 
 const upload = multer({ dest: 'src/uploads' })
 const router = express.Router()
@@ -13,3 +13,4 @@ router.patch('/:_id',upload.single('prodImg'),productController.updateProduct)
 router.delete('/delete/:_id',productController.deleteProduct)
 
 module.exports = router
+export {} // chuyển file thành ES module

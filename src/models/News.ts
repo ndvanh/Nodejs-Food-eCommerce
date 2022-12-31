@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const News = new Schema({
@@ -8,3 +8,4 @@ const News = new Schema({
   editor: {type : String , maxLength:50, require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('News', News)
+export {} // chuyển file thành ES module

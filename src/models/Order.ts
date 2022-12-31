@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Order = new Schema({
@@ -11,3 +11,4 @@ const Order = new Schema({
   status : {type : Boolean , require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('Order', Order)
+export {} // chuyển file thành ES module

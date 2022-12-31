@@ -1,5 +1,4 @@
-import express from "express"
-
+const express = require('express')
 const router = express.Router()
 const contactController = require('../controllers/ContactController')
 
@@ -9,5 +8,4 @@ router.patch('/:_id',contactController.updateContact)
 router.delete('/delete/:_id',contactController.deleteContact)
 
 module.exports = router
-
-
+export {} // chuyển file thành ES module

@@ -25,7 +25,7 @@ class UserController {
       }
     }
     // POST thêm người dùng (đăng ký)
-    async addUser(req : any, res : Response) {
+    async addUser(req : Request, res : Response) {
       try{
         const email = await User.findOne({userMail :req.body.userMail})
         if(email) res.status(409).send('Tài khoản đã tồn tại (Email đã tồn tại)')
@@ -40,7 +40,7 @@ class UserController {
       }
      }
      // POST đăng nhập
-    async loginUser(req : any, res : Response) {
+    async loginUser(req : Request, res : Response) {
       try{
         const userAccount = await User.findOne({userMail :req.body.userMail,userPassword:req.body.userPassword})
         if (userAccount) res.json(userAccount)
@@ -51,7 +51,7 @@ class UserController {
       }
      }
          // PATCH cập nhật menu
-     async updateUser(req : any, res : Response) {
+     async updateUser(req : Request, res : Response) {
       try{
           await User.updateOne({_id:req.params._id},req.body)
           res.json()

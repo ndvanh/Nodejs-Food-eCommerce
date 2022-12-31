@@ -25,7 +25,7 @@ class ContactController {
         }
     }
     // POST thêm liên hệ
-    async addContact(req : any, res : Response) {
+    async addContact(req : Request, res : Response) {
         try{
           const contactItem = new Contact(req.body)
           await contactItem.save()
@@ -36,7 +36,7 @@ class ContactController {
         }
      }
          // PATCH cập nhật menu
-     async updateContact(req : any, res : Response) {
+     async updateContact(req : Request, res : Response) {
       try{
           await Contact.updateOne({_id:req.params._id},req.body)
           res.json()

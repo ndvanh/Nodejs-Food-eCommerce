@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Contact = new Schema({
@@ -7,3 +7,4 @@ const Contact = new Schema({
   contentCt : {type : String , require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('Contact', Contact)
+export {} // chuyển file thành ES module

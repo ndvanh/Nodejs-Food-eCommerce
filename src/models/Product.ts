@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Product = new Schema({
@@ -11,3 +11,4 @@ const Product = new Schema({
     saleOff : {type : String , require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('Product', Product)
+export {} // chuyển file thành ES module

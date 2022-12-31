@@ -1,6 +1,4 @@
-import express from "express"
-import {multer} from "../index"
-
+const express = require('express')
 const router = express.Router()
 const orderController = require('../controllers/OrderController')
 
@@ -11,5 +9,5 @@ router.patch('/:_id',orderController.updateOrder)
 router.delete('/delete/:_id',orderController.deleteOrder)
 
 module.exports = router
-
+export {} // chuyển file thành ES module
 
