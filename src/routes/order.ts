@@ -9,5 +9,5 @@ router.patch('/:_id',orderController.updateOrder)
 router.delete('/delete/:_id',orderController.deleteOrder)
 
 module.exports = router
-export {} // chuyển file thành ES module
+export {} 
 

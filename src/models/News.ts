@@ -8,4 +8,4 @@ const News = new Schema({
   editor: {type : String , maxLength:50, require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('News', News)
-export {} // chuyển file thành ES module
+export {} 

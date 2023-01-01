@@ -8,4 +8,4 @@ router.patch('/:_id',contactController.updateContact)
 router.delete('/delete/:_id',contactController.deleteContact)
 
 module.exports = router
-export {} // chuyển file thành ES module
+export {} 

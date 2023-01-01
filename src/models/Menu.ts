@@ -6,4 +6,4 @@ const Menu = new Schema({
   imgMenu : {type : String , require:true},
 },{timestamps: true})
 module.exports =  mongoose.model('Menu', Menu)
-export {} // chuyển file thành ES module
+export {} 

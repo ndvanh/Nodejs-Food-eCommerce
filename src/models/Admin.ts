@@ -6,4 +6,4 @@ const Admin = new Schema({
    adminPassword: {type : String, require: true,minLength:6},
 },{timestamps: true})
 module.exports =  mongoose.model('Admin', Admin)
-export {} // chuyển file thành ES module
+export {} 

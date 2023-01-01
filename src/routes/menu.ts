@@ -11,5 +11,5 @@ router.patch('/:_id',upload.single('imgMenu'),menuController.updateMenu)
 router.delete('/delete/:_id',menuController.deleteMenu)
 
 module.exports = router
-export {} // chuyển file thành ES module
+export {} 
 

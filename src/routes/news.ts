@@ -12,5 +12,5 @@ router.patch('/:_id',upload.single('imgNews'),newsController.updateNews)
 router.delete('/delete/:_id',newsController.deleteNews)
 
 module.exports = router
-export {} // chuyển file thành ES module
+export {} 
 
