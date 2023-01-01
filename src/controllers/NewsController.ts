@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 const News = require("../models/News")
 const fs = require('fs')
+require("dotenv").config()
 class NewsController {
     // GET lấy tất cả danh sách tin tức
     async getAllNews(req : Request, res : Response) {
@@ -38,7 +39,7 @@ class NewsController {
     // POST thêm tin tức
     async addNews(req : any, res : Response) {
         try{
-          req.body.imgNews = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`
+          req.body.imgNews = `${process.env.API_URL}/uploads/${req.file.filename}`
           const newItem = new News(req.body)
           await newItem.save()
           res.json()
@@ -58,7 +59,7 @@ class NewsController {
         }
         else {
           // const filter = {_id:req.params._id}
-          req.body.imgNews = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`
+          req.body.imgNews = `${process.env.API_URL}/uploads/${req.file.filename}`
           await News.updateOne({_id:req.params._id},req.body)
           res.json()
         }

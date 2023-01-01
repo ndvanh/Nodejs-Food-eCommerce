@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 const Product = require("../models/Product")
 const fs = require('fs')
-
+require("dotenv").config()
 interface CartItem{
   _id: null,
   prodName: string,
@@ -75,7 +75,7 @@ class ProductController {
     // POST thêm sp
     async addProduct(req : any, res : Response) {
       try{
-        req.body.prodImg = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`
+        req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`
         const productItem = new Product(req.body)
         await productItem.save()
         res.json()
@@ -95,7 +95,7 @@ class ProductController {
       }
       else {
         // const filter = {_id:req.params._id}
-        req.body.prodImg = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`
+        req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`
         await Product.updateOne({_id:req.params._id},req.body)
         res.json()
       }

@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const Product = require("../models/Product");
 const fs = require('fs');
+require("dotenv").config();
 class ProductController {
     // GET lấy tất cả sản phẩm
     getAllProduct(req, res) {
@@ -80,7 +81,7 @@ class ProductController {
     addProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                req.body.prodImg = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`;
+                req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`;
                 const productItem = new Product(req.body);
                 yield productItem.save();
                 res.json();
@@ -102,7 +103,7 @@ class ProductController {
                 }
                 else {
                     // const filter = {_id:req.params._id}
-                    req.body.prodImg = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`;
+                    req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`;
                     yield Product.updateOne({ _id: req.params._id }, req.body);
                     res.json();
                 }

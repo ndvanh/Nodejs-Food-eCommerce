@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const News = require("../models/News");
 const fs = require('fs');
+require("dotenv").config();
 class NewsController {
     // GET lấy tất cả danh sách tin tức
     getAllNews(req, res) {
@@ -54,7 +55,7 @@ class NewsController {
     addNews(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                req.body.imgNews = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`;
+                req.body.imgNews = `${process.env.API_URL}/uploads/${req.file.filename}`;
                 const newItem = new News(req.body);
                 yield newItem.save();
                 res.json();
@@ -76,7 +77,7 @@ class NewsController {
                 }
                 else {
                     // const filter = {_id:req.params._id}
-                    req.body.imgNews = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`;
+                    req.body.imgNews = `${process.env.API_URL}/uploads/${req.file.filename}`;
                     yield News.updateOne({ _id: req.params._id }, req.body);
                     res.json();
                 }
