@@ -15,7 +15,7 @@ class MenuController {
     // POST thêm menu
     async addMenu(req : any, res : Response) {
         try{
-          req.body.imgMenu = `http://localhost:8080/uploads/${req.file.filename}`
+          req.body.imgMenu = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`
           const menuItem = new Menu(req.body)
           await menuItem.save()
           res.json()
@@ -35,7 +35,7 @@ class MenuController {
         }
         else {
           // const filter = {_id:req.params._id}
-          req.body.imgMenu = `http://localhost:8080/uploads/${req.file.filename}`
+          req.body.imgMenu = `https://nodejs-food-ecommerce-production.up.railway.app/uploads/${req.file.filename}`
           await Menu.updateOne({_id:req.params._id},req.body)
           res.json()
         }
