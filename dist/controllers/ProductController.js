@@ -81,7 +81,7 @@ class ProductController {
     addProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`;
+                req.body.prodImg = `${process.env.API_URL}/src/uploads/${req.file.filename}`;
                 const productItem = new Product(req.body);
                 yield productItem.save();
                 res.json();
@@ -103,7 +103,7 @@ class ProductController {
                 }
                 else {
                     // const filter = {_id:req.params._id}
-                    req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`;
+                    req.body.prodImg = `${process.env.API_URL}/src/uploads/${req.file.filename}`;
                     yield Product.updateOne({ _id: req.params._id }, req.body);
                     res.json();
                 }

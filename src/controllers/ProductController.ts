@@ -75,7 +75,7 @@ class ProductController {
     // POST thêm sp
     async addProduct(req : any, res : Response) {
       try{
-        req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`
+        req.body.prodImg = `${process.env.API_URL}/src/uploads/${req.file.filename}`
         const productItem = new Product(req.body)
         await productItem.save()
         res.json()
@@ -95,7 +95,7 @@ class ProductController {
       }
       else {
         // const filter = {_id:req.params._id}
-        req.body.prodImg = `${process.env.API_URL}/uploads/${req.file.filename}`
+        req.body.prodImg = `${process.env.API_URL}/src/uploads/${req.file.filename}`
         await Product.updateOne({_id:req.params._id},req.body)
         res.json()
       }

@@ -39,7 +39,7 @@ class NewsController {
     // POST thêm tin tức
     async addNews(req : any, res : Response) {
         try{
-          req.body.imgNews = `${process.env.API_URL}/uploads/${req.file.filename}`
+          req.body.imgNews = `${process.env.API_URL}/src/uploads/${req.file.filename}`
           const newItem = new News(req.body)
           await newItem.save()
           res.json()
@@ -59,7 +59,7 @@ class NewsController {
         }
         else {
           // const filter = {_id:req.params._id}
-          req.body.imgNews = `${process.env.API_URL}/uploads/${req.file.filename}`
+          req.body.imgNews = `${process.env.API_URL}/src/uploads/${req.file.filename}`
           await News.updateOne({_id:req.params._id},req.body)
           res.json()
         }

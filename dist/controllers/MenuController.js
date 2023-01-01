@@ -29,7 +29,7 @@ class MenuController {
     addMenu(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                req.body.imgMenu = `${process.env.API_URL}/uploads/${req.file.filename}`;
+                req.body.imgMenu = `${process.env.API_URL}/src/uploads/${req.file.filename}`;
                 const menuItem = new Menu(req.body);
                 yield menuItem.save();
                 res.json();
@@ -51,7 +51,7 @@ class MenuController {
                 }
                 else {
                     // const filter = {_id:req.params._id}
-                    req.body.imgMenu = `${process.env.API_URL}/uploads/${req.file.filename}`;
+                    req.body.imgMenu = `${process.env.API_URL}/src/uploads/${req.file.filename}`;
                     yield Menu.updateOne({ _id: req.params._id }, req.body);
                     res.json();
                 }
