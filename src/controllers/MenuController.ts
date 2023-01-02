@@ -16,7 +16,7 @@ class MenuController {
     // POST thêm menu
     async addMenu(req : any, res : Response) {
         try{
-          req.body.imgMenu = `${process.env.API_URL}/src/uploads/${req.file.filename}`
+          req.body.imgMenu = `${process.env.API_URL}/uploads/${req.file.filename}`
           const menuItem = new Menu(req.body)
           await menuItem.save()
           res.json()
@@ -36,7 +36,7 @@ class MenuController {
         }
         else {
           // const filter = {_id:req.params._id}
-          req.body.imgMenu = `${process.env.API_URL}/src/uploads/${req.file.filename}`
+          req.body.imgMenu = `${process.env.API_URL}/uploads/${req.file.filename}`
           await Menu.updateOne({_id:req.params._id},req.body)
           res.json()
         }
