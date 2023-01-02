@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const multer = require('multer');
-const upload = multer({ dest: 'src/uploads' });
+const upload = multer({ dest: 'dist/uploads' });
 const router = express.Router();
 const menuController = require('../controllers/MenuController');
 router.get('/', menuController.getAllMenu);
